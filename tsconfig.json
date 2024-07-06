@@ -15,14 +15,10 @@
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",
     "paths": {
-      "shadcn/*": [
-        "src/shadcn/*",
-        "src/shadcn/components/ui/*",
-        "src/shadcn/lib/*"
-      ],
+      "shadcn/*": ["src/shadcn/*", "src/shadcn/components/ui/*", "src/shadcn/lib/*"],
       "@/*": ["src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "*.json", "*.mjs"],
   "exclude": ["node_modules"]
 }

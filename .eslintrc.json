@@ -1,3 +1,71 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+
+  "plugins": ["@typescript-eslint", "prettier", "import", "jsx-a11y", "react", "react-hooks", "check-file"],
+
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
+  "rules": {
+    "prettier/prettier": 2,
+    "react/react-in-jsx-scope": 0,
+    "import/prefer-default-export": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "no-underscore-dangle": 0,
+    "@typescript-eslint/no-unused-vars": [2, { "argsIgnorePattern": "^_" }],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["*.config.{mjs,ts,cjs}"] }],
+    "check-file/folder-naming-convention": [2, { "*/**": "KEBAB_CASE" }],
+    "check-file/filename-naming-convention": [2, { "**/*.*": "KEBAB_CASE" }, { "ignoreMiddleExtensions": true }],
+    "@typescript-eslint/naming-convention": [
+      2,
+      {
+        "format": ["strictCamelCase", "PascalCase", "UPPER_CASE"],
+        "selector": "default",
+        "leadingUnderscore": "allow",
+        "trailingUnderscore": "allow"
+      },
+      {
+        "selector": "objectLiteralProperty",
+        "modifiers": ["requiresQuotes"],
+        "format": null
+      }
+    ]
+  },
+
+  "overrides": [
+    {
+      "files": ["app/**/*"],
+      "rules": {
+        "check-file/folder-naming-convention": [2, { "*/**": "NEXT_JS_APP_ROUTER_CASE" }]
+      }
+    }
+  ],
+
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
 }
