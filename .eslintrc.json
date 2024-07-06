@@ -35,27 +35,34 @@
     "import/no-extraneous-dependencies": ["error", { "devDependencies": ["*.config.{mjs,ts,cjs}"] }],
     "check-file/folder-naming-convention": [2, { "*/**": "KEBAB_CASE" }],
     "check-file/filename-naming-convention": [2, { "**/*.*": "KEBAB_CASE" }, { "ignoreMiddleExtensions": true }],
-    "@typescript-eslint/naming-convention": [
-      2,
+
+    "no-restricted-imports": [
+      1,
       {
-        "format": ["strictCamelCase", "PascalCase", "UPPER_CASE"],
-        "selector": "default",
-        "leadingUnderscore": "allow",
-        "trailingUnderscore": "allow"
+        "name": "next/link",
+        "message": "Please import from `@/navigation` instead."
       },
       {
-        "selector": "objectLiteralProperty",
-        "modifiers": ["requiresQuotes"],
-        "format": null
+        "name": "next/navigation",
+        "importNames": ["redirect", "permanentRedirect", "useRouter", "usePathname"],
+        "message": "Please import from `@/navigation` instead."
       }
     ]
   },
 
   "overrides": [
     {
-      "files": ["app/**/*"],
+      "files": ["src/app/**/*"],
       "rules": {
         "check-file/folder-naming-convention": [2, { "*/**": "NEXT_JS_APP_ROUTER_CASE" }]
+      }
+    },
+    {
+      "files": ["*.config.{mjs,ts,cjs}", "i18n.ts"],
+      "rules": {
+        "@typescript-eslint/no-unsafe-call": 0,
+        "@typescript-eslint/no-unsafe-assignment": 0,
+        "@typescript-eslint/no-unsafe-member-access": 0
       }
     }
   ],
