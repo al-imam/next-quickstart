@@ -1,4 +1,4 @@
-import { locales } from "@/config";
+import { locales } from "@/config/i18n.config";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";

@@ -1,4 +1,4 @@
-import { defaultLocale, localePrefix, locales, pathnames } from "@/config";
+import { defaultLocale, localePrefix, locales, pathnames } from "@/config/i18n.config";
 import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
