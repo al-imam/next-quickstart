@@ -1,3 +1,11 @@
 {
-  "*": { "title": "This is a message in English" }
+  "welcome": {
+    "title": "Welcome to the Hadith App",
+    "description": "Explore and read Hadiths in different languages on our Hadith app."
+  },
+
+  "locale-switcher": {
+    "label": "Change language",
+    "locale": "{locale, select, bn {🇧🇩 বাংলা} en {🇺🇸 English} other {Unknown}}"
+  }
 }

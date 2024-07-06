@@ -1,5 +1,6 @@
-import { locales } from "@/config/i18n.config";
 import "@/styles/globals.css";
+
+import { locales } from "@/config/i18n.config";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
