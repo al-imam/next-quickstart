@@ -1,40 +1,25 @@
+import { Locale } from "@/config/i18n.config";
 import { fontsConfig, FontStyleName } from "@/utils/intl/fonts";
 
-const fontCache = new Map<string, boolean>();
-
-export function getFontConfig(locale: keyof typeof fontsConfig) {
+export function getFontByLocale(locale: Locale) {
   return fontsConfig[locale] ?? fontsConfig.en;
 }
 
-export function getFontStyle(locale: keyof typeof fontsConfig, level: FontStyleName) {
-  const config = fontsConfig[locale][level];
-
-  if (typeof window === "undefined" || typeof FontFace === "undefined") {
-    return config;
-  }
-
-  const cacheKey = `${locale}-${config.font.name}`;
-
-  if (fontCache.has(cacheKey)) {
-    return config;
-  }
-
-  fontCache.set(cacheKey, true);
-  config.variable.forEach(variable => {
-    document.documentElement.style.setProperty(variable, `${config.font.name}, sans-serif`);
-  });
-
-  return config;
+export function getFontStyle(locale: Locale, level: FontStyleName = "base") {
+  return fontsConfig[locale][level];
 }
 
-export function getFontClassName(locale: keyof typeof fontsConfig, level: FontStyleName) {
+export function getClassNameByLocal(locale: Locale, level: FontStyleName) {
   return getFontStyle(locale, level).className;
 }
 
-export function getFontFamily(locale: keyof typeof fontsConfig, level: FontStyleName = "base") {
-  return getFontStyle(locale, level).font.name;
+export function getFontFamily(locale: Locale) {
+  return getFontByLocale(locale)
+    ._fonts.map(font => font.name)
+    .join(", ");
 }
 
-export function getFontInlineStyle(locale: keyof typeof fontsConfig, level: FontStyleName) {
-  return getFontStyle(locale, level).style;
+export function getFontInlineStyle(locale: Locale, level: FontStyleName) {
+  const config = getFontStyle(locale, level);
+  return config.style ?? {};
 }

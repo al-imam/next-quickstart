@@ -4,55 +4,48 @@ export type FontStyleName = "title" | "base" | "subtitle";
 
 export type FontConfig = {
   className: string;
-  style: Partial<CSSStyleDeclaration>;
+  style?: Partial<CSSStyleDeclaration>;
   variable: string[];
-  font: { name: string } | { name: string; path: string; type: string };
 };
+
+export type Font = { name: string; path: string; type: string; weight?: `${number}` };
 
 export const fontsConfig = {
   en: {
+    _fonts: [],
+
     title: {
       className: "font-roboto text-3xl",
-      style: {},
       variable: ["--font-title", "--ff-roboto"],
-      font: { name: "roboto" },
     },
 
     base: {
       className: "font-roboto text-base",
-      style: {},
       variable: ["--font-base", "--ff-roboto"],
-      font: { name: "roboto" },
     },
 
     subtitle: {
-      className: "font-roboto text-xl",
-      style: {},
+      className: "font-roboto text-base",
       variable: ["--font-subtitle", "--ff-roboto"],
-      font: { name: "roboto" },
     },
   },
 
   bn: {
+    _fonts: [{ path: "kalpurush.ttf", type: "truetype", name: "kalpurush" }],
+
     title: {
-      className: "font-bold text-3xl font-kalpurush",
-      style: {},
+      className: "text-3xl font-kalpurush",
       variable: ["--font-title", "--ff-kalpurush"],
-      font: { name: "kalpurush", path: "kalpurush.ttf", type: "truetype" },
     },
 
     base: {
-      className: "font-normal text-base font-kalpurush",
-      style: {},
+      className: "text-base font-kalpurush",
       variable: ["--font-base", "--ff-kalpurush"],
-      font: { name: "kalpurush", path: "kalpurush.ttf", type: "truetype" },
     },
 
     subtitle: {
-      className: "font-semibold text-xl font-kalpurush",
+      className: "text-base font-kalpurush",
       variable: ["--font-subtitle", "--ff-kalpurush"],
-      style: {},
-      font: { name: "kalpurush", path: "kalpurush.ttf", type: "truetype" },
     },
   },
-} satisfies Record<(typeof locales)[number], Record<FontStyleName, FontConfig>>;
+} as Record<(typeof locales)[number], Record<FontStyleName, FontConfig> & { _fonts: Font[] }>;
