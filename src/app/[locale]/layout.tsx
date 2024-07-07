@@ -1,12 +1,12 @@
 import "@/styles/globals.css";
 
+import { LoadFontForLocal } from "@/components/utils/font-loader";
 import { locales } from "@/config/i18n.config";
+import { getFontClassName, getFontFamily } from "@/utils/intl/style";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"], variable: "--ff-inter" });
+import { cn } from "shadcn/lib/utils";
 
 export const metadata: Metadata = {
   title: "Sophisticated Next App",
@@ -29,7 +29,11 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={[inter.variable].join(" ")}>
+      <body
+        style={{ fontFamily: getFontFamily(locale as "en") }}
+        className={cn(getFontClassName(locale as "en", "base"))}
+      >
+        <LoadFontForLocal />
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
