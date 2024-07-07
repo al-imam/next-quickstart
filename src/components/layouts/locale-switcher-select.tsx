@@ -1,5 +1,6 @@
 "use client";
 
+// example component that switches the locales use it as example to create your own
 import { usePathname, useRouter } from "@/navigation";
 import { useParams } from "next/navigation";
 import { ChangeEvent, ReactNode, useId, useTransition } from "react";
@@ -35,14 +36,14 @@ export function LocaleSwitcherSelect({ children, defaultValue, label }: LocaleSw
   return (
     <label
       htmlFor={id}
-      className={cn("relative w-max text-gray-400", {
+      className={cn("relative w-32 text-gray-400", {
         "transition-opacity [&:disabled]:opacity-30": isPending,
       })}
     >
       <p className="sr-only">{label}</p>
       <select
         id={id}
-        className="inline-flex bg-transparent px-2 pl-3 pr-1"
+        className="inline-flex rounded bg-transparent pr-1"
         defaultValue={defaultValue}
         disabled={isPending}
         onChange={onSelectChange}

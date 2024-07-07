@@ -1,4 +1,5 @@
 import { LocaleSwitcher } from "@/components/layouts/locale-switcher";
+import { ThemeSwitcher } from "@/components/layouts/theme-switcher";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
@@ -12,6 +13,7 @@ export default function Home({ params: { locale } }: { params: { locale: string 
         <h1 className="mb-4 text-4xl font-bold">{t("title")}</h1>
         <p className="mb-4 text-lg">{t("description")}</p>
         <LocaleSwitcher />
+        <ThemeSwitcher />
       </main>
     </div>
   );

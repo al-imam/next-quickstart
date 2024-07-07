@@ -2,6 +2,7 @@ import { LocaleSwitcherSelect } from "@/components/layouts/locale-switcher-selec
 import { locales } from "@/config/i18n.config";
 import { useLocale, useTranslations } from "next-intl";
 
+// example component it showcases how to use intl hooks
 export function LocaleSwitcher() {
   const t = useTranslations("locale-switcher");
   const locale = useLocale();

@@ -15,7 +15,16 @@
     "plugin:react-hooks/recommended"
   ],
 
-  "plugins": ["@typescript-eslint", "prettier", "import", "jsx-a11y", "react", "react-hooks", "check-file"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "import",
+    "jsx-a11y",
+    "react",
+    "react-func",
+    "react-hooks",
+    "check-file"
+  ],
 
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -32,10 +41,22 @@
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "no-underscore-dangle": 0,
     "react/jsx-fragments": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/boolean-prop-naming": ["error", { "rule": "^(is|has|should)[A-Z]([A-Za-z0-9]?)+" }],
+    "max-lines": [2, { "max": 150, "skipBlankLines": true, "skipComments": true }],
     "@typescript-eslint/no-unused-vars": [2, { "argsIgnorePattern": "^_" }],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["*.config.{mjs,ts,cjs}"] }],
+    "import/no-extraneous-dependencies": [2, { "devDependencies": ["*.config.{mjs,ts,cjs}"] }],
     "check-file/folder-naming-convention": [2, { "*/**": "KEBAB_CASE" }],
     "check-file/filename-naming-convention": [2, { "**/*.*": "KEBAB_CASE" }, { "ignoreMiddleExtensions": true }],
+
+    "react-func/max-lines-per-function": [
+      2,
+      {
+        "max": 30,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
 
     "no-restricted-imports": [
       1,
