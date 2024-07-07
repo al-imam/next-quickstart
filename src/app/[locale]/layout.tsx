@@ -29,7 +29,12 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body style={{ fontFamily: getFontFamily(locale) }} className={cn(getClassNameByLocal(locale, "subtitle"))}>
+      <body
+        style={{ fontFamily: getFontFamily(locale) }}
+        className={cn(getClassNameByLocal(locale, "subtitle"), {
+          "debug-screens": process.env.NODE_ENV === "development",
+        })}
+      >
         <LoadFontForLocal />
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
